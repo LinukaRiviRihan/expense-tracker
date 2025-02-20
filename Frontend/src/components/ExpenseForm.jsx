@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Form, Row, Col, Button } from 'react-bootstrap';
-import { deleteExpense, editExpense, newExpense } from '../services/expenses';
+import { DeleteExpense, EditExpense, AddExpense } from '../services/expenses';
 import { useDispatch } from 'react-redux';
 
 function ExpenseForm({ expense, setIsEditing }) {
@@ -34,9 +34,9 @@ function ExpenseForm({ expense, setIsEditing }) {
         onSubmit={(e) => {
           e.preventDefault();
           if (isNewExpense) {
-            newExpense(dispatch, { description, amount });
+            AddExpense(dispatch, { description, amount });
           } else {
-            editExpense(dispatch, { id: expense.id, description, amount });
+            EditExpense(dispatch, { id: expense.id, description, amount });
             setIsEditing(false);
           }
         }}
@@ -84,7 +84,7 @@ function ExpenseForm({ expense, setIsEditing }) {
                   <Button
                     style={{ marginRight: '8px' }}
                     variant="danger"
-                    onClick={() => deleteExpense(dispatch, expense)}
+                    onClick={() => DeleteExpense(dispatch, expense)}
                   >
                     Delete
                   </Button>

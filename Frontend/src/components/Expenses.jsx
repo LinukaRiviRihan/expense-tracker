@@ -1,15 +1,15 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getExpenses } from '../services/expenses';
+import { GetExpenses } from '../services/expenses';
 import { Button, Row, Col } from 'react-bootstrap';
 import ExpenseForm from './ExpenseForm';
 
 function Expenses() {
   const dispatch = useDispatch();
-  const expenses = useSelector((state) => state.expensesReducer.expenses);
+  const expenses = useSelector((state) => state.expensesSlice.expenses);
 
   useEffect(() => {
-    getExpenses(dispatch);
+    GetExpenses(dispatch);
   }, []);
 
   const ListRow = ({ expense }) => {
