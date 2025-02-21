@@ -1,4 +1,9 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, createAction } from '@reduxjs/toolkit';
+
+export const getExpensesError = createAction('setExpensesError');
+export const newExpensesError = createAction('newExpensesError');
+export const editExpensesError = createAction('editExpensesError');
+export const deleteExpensesError = createAction('deleteExpensesError');
 
 export const expensesSlice = createSlice({
   name: 'expenses',
@@ -9,7 +14,7 @@ export const expensesSlice = createSlice({
     getExpenses: (state, action) => {
       state.expenses = action.payload;
     },
-    addExpense: (state, action) => {
+    newExpense: (state, action) => {
       state.expenses.push(action.payload);
     },
     editExpense: (state, action) => {
@@ -25,7 +30,7 @@ export const expensesSlice = createSlice({
   },
 });
 
-export const { getExpenses, addExpense, editExpense, deleteExpense } =
+export const { getExpenses, newExpense, editExpense, deleteExpense } =
   expensesSlice.actions;
 
 export default expensesSlice.reducer;
